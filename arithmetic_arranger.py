@@ -34,12 +34,9 @@ def arithmetic_arranger(problems, answer=False):
         dash_num = max(len(operand1), len(operand2)) + 2
         problems_dict["dashes"].append(dash_num * "-")
         # add leading whitespaces and operator to operands and result
-        ws1 = dash_num - len(operand1)
-        operand1 = ws1 * " " + operand1
-        ws2 = dash_num - len(operand2) - 2
-        operand2 = operator + (ws2 + 1) * " " + operand2
-        wsr = dash_num - len(result)
-        result = wsr * " " + result
+        operand1 = operand1.rjust(dash_num)
+        operand2 = operator + operand2.rjust(dash_num -1)
+        result = result.rjust(dash_num)
         # add operands and result to corresponding lists in dict
         problems_dict["operand1"].append(operand1)
         problems_dict["operand2"].append(operand2)
